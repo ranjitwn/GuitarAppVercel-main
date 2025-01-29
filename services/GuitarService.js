@@ -1,3 +1,5 @@
+const { where } = require("sequelize");
+
 class GuitarService {
 	constructor(db) {
 		this.client = db.sequelize;
@@ -30,6 +32,12 @@ class GuitarService {
 			},
 		});
 		return guitar;
+	}
+
+	async deleteGuitar(guitarId) {
+		return this.Guitar.distroy({
+			where: { id: guitarId },
+		});
 	}
 
 }
